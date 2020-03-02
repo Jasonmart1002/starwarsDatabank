@@ -32,40 +32,38 @@ export function Home() {
 
 	return (
 		<div className="container-fluid p-0">
-			<div className="container">
-				<div id="carouselExampleFade" className="carousel slide carousel-fade mb-5 " data-ride="carousel">
-					<div className="carousel-inner">
-						<div className="carousel-item active">
-							<img
-								src="https://www.wallpaperflare.com/static/72/898/429/star-wars-hoth-snow-white-wallpaper.jpg"
-								className="d-block w-100 carouselpic img-responsive"
-								alt="..."
-							/>
-						</div>
-						<div className="carousel-item">
-							<img
-								src="https://adwallpapers.xyz/uploads/posts/76110-star-wars-battlefront-snow-attack-4k-ultra-hd-wallpaper__video-games.jpg"
-								className="d-block w-100 carouselpic img-responsive"
-								alt="..."
-							/>
-						</div>
-						<div className="carousel-item">
-							<img
-								src="https://i.pinimg.com/originals/30/e9/ac/30e9acc08db9d94c419f18a2af077610.jpg"
-								className="d-block w-100 carouselpic img-responsive"
-								alt="..."
-							/>
-						</div>
+			<div id="carouselExampleFade" className="carousel slide carousel-fade mb-5 " data-ride="carousel">
+				<div className="carousel-inner">
+					<div className="carousel-item active">
+						<img
+							src="https://adwallpapers.xyz/uploads/posts/76110-star-wars-battlefront-snow-attack-4k-ultra-hd-wallpaper__video-games.jpg"
+							className="d-block w-100 carouselpic img-responsive"
+							alt="..."
+						/>
 					</div>
-					<a className="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-						<span className="carousel-control-prev-icon" aria-hidden="true" />
-						<span className="sr-only">Previous</span>
-					</a>
-					<a className="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-						<span className="carousel-control-next-icon" aria-hidden="true" />
-						<span className="sr-only">Next</span>
-					</a>
+					<div className="carousel-item">
+						<img
+							src="https://www.wallpaperflare.com/static/72/898/429/star-wars-hoth-snow-white-wallpaper.jpg"
+							className="d-block w-100 carouselpic img-responsive"
+							alt="..."
+						/>
+					</div>
+					<div className="carousel-item">
+						<img
+							src="https://i.pinimg.com/originals/30/e9/ac/30e9acc08db9d94c419f18a2af077610.jpg"
+							className="d-block w-100 carouselpic img-responsive"
+							alt="..."
+						/>
+					</div>
 				</div>
+				<a className="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+					<span className="carousel-control-prev-icon" aria-hidden="true" />
+					<span className="sr-only">Previous</span>
+				</a>
+				<a className="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+					<span className="carousel-control-next-icon" aria-hidden="true" />
+					<span className="sr-only">Next</span>
+				</a>
 			</div>
 
 			<div className="container">
