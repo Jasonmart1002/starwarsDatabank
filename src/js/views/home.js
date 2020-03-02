@@ -83,7 +83,7 @@ export function Home() {
 					<div className="col">
 						<div className="card-deck">
 							{tasks === null
-								? "Loadi."
+								? "Loading..."
 								: tasks.map((t, index) => (
 										<div className="col-4" key={index}>
 											<div className="card mb-5">
