@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 
 import { Context } from "../store/appContext";
@@ -23,12 +22,12 @@ export function Home() {
 
 	const { store, actions } = useContext(Context);
 
-	useEffect(() => {
-		fetch("https://swapi.co/api/people/")
-			.then(r => r.json())
-			.then(data => setTasks(data.results)),
-			[];
-	}, []);
+	// useEffect(() => {
+	// 	fetch("https://swapi.co/api/people/")
+	// 		.then(r => r.json())
+	// 		.then(data => setTasks(data.results)),
+	// 		[];
+	// }, []);
 
 	return (
 		<div className="container-fluid p-0">
@@ -82,9 +81,9 @@ export function Home() {
 				<div className="row">
 					<div className="col">
 						<div className="card-deck">
-							{tasks === null
+							{store.tasks === null
 								? "Loading..."
-								: tasks.map((t, index) => (
+								: store.tasks.map((t, index) => (
 										<div className="col-4" key={index}>
 											<div className="card mb-5">
 												<img

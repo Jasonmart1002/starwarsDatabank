@@ -21,7 +21,15 @@ const injectContext = PassedComponent => {
 			})
 		);
 
-		useEffect(() => {}, []);
+		useEffect(() => {
+			fetch("https://swapi.co/api/people/")
+				.then(r => r.json())
+				// .then(data => setTasks(data.results));
+				.then(data => {
+					let { store } = state;
+					setState({ store: { ...store, tasks: data.results } });
+				});
+		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
 		// the context will now have a getStore, getActions and setStore functions available, because they were declared
