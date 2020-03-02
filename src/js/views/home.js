@@ -65,41 +65,54 @@ export function Home() {
 					<span className="sr-only">Next</span>
 				</a>
 			</div>
+			<div className="container-fluid">
+				<img
+					className="saber"
+					src="https://www.pngarts.com/files/3/Blue-Lightsaber-PNG-Transparent-Image.png"
+				/>
+			</div>
+			<div className="container">
+				<img
+					className="favorites mb-5"
+					src="https://fontmeme.com/temporary/a6e82f4de764aafbb931bf6569a3e532.png"
+				/>
+			</div>
 
 			<div className="container">
 				<div className="row">
-					<div className="col-4" />
-					<div className="card-deck">
-						{tasks === null
-							? "Loadi."
-							: tasks.map((t, index) => (
-									<div className="col-4" key={index}>
-										<div className="card mb-5">
-											<img
-												src="https://wallpaperaccess.com/full/153605.jpg"
-												className="card-img-top cardimg"
-												alt="..."
-											/>
-											<div className="card-body">
-												<h5 className="card-title">{t.name}</h5>
-												<p className="card-text">
-													<p>Height: {Math.round((t.height / 30.48) * 10) / 10} ft </p>
-													<p>Gender: {t.gender}</p>
-													<p>Weight: {Math.round(t.mass * 2.205 * 10) / 10} lbs</p>
-												</p>
-												<button
-													type="button"
-													onClick={() => {
-														addToFav(t);
-														console.log({ favCards });
-													}}
-													className="btn btn-primary btn-sm">
-													Favorite
-												</button>
+					<div className="col">
+						<div className="card-deck">
+							{tasks === null
+								? "Loadi."
+								: tasks.map((t, index) => (
+										<div className="col-4" key={index}>
+											<div className="card mb-5">
+												<img
+													src="https://wallpaperaccess.com/full/153605.jpg"
+													className="card-img-top cardimg"
+													alt="..."
+												/>
+												<div className="card-body">
+													<h5 className="card-title">{t.name}</h5>
+													<p className="card-text">
+														<p>Height: {Math.round((t.height / 30.48) * 10) / 10} ft </p>
+														<p>Gender: {t.gender}</p>
+														<p>Weight: {Math.round(t.mass * 2.205 * 10) / 10} lbs</p>
+													</p>
+													<button
+														type="button"
+														onClick={() => {
+															addToFav(t);
+															console.log({ favCards });
+														}}
+														className="btn btn-primary btn-sm">
+														Favorite
+													</button>
+												</div>
 											</div>
 										</div>
-									</div>
-							  ))}
+								  ))}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -111,7 +124,7 @@ export function Home() {
 			</div>
 			<div className="container">
 				<img
-					className="favorites m-3"
+					className="favorites mb-5"
 					src="https://fontmeme.com/temporary/c7466f9c1d77c45dd8effcebb6adfa1f.png"
 				/>
 			</div>
