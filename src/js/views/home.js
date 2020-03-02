@@ -1,23 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 
+import { Context } from "../store/appContext";
+
 export function Home() {
 	const [tasks, setTasks] = useState(null);
+	const [favCards, setFavCards] = useState([]);
+	const [rmvFav, setRmvFav] = useState(favCards);
 
-	const deleteLabel = val => {
-		const newTasks = [...tasks];
-		newTasks.splice(val, 1);
-		setTasks(newTasks);
+	const addToFav = val => {
+		const newFavs = [...favCards];
+		newFavs.push(val);
+		setFavCards(newFavs);
 	};
 
-	useEffect(
-		() =>
-			fetch("https://swapi.co/api/people/")
-				.then(r => r.json())
-				.then(data => setTasks(data.results)),
-		[]
-	);
+	const deleteLabel = val => {
+		const newestFavs = [...rmvFav];
+		newestFavs.splice(val, 1);
+		setFavCards(newestFavs);
+	};
+
+	const { store, actions } = useContext(Context);
+
+	useEffect(() => {
+		fetch("https://swapi.co/api/people/")
+			.then(r => r.json())
+			.then(data => setTasks(data.results)),
+			[];
+	}, []);
 
 	return (
 		<div className="container-fluid p-0">
@@ -59,30 +70,35 @@ export function Home() {
 
 			<div className="container">
 				<div className="row">
+					<div className="col-4" />
 					<div className="card-deck">
 						{tasks === null
 							? "Loadi."
 							: tasks.map((t, index) => (
-									<div className="card mb-5" key={index}>
-										<img
-											src="https://wallpaperaccess.com/full/153605.jpg"
-											className="card-img-top cardimg"
-											alt="..."
-										/>
-										<div className="card-body">
-											<h5 className="card-title">{t.name}</h5>
-											<p className="card-text">
-												This is a longer card with supporting text below as a natural lead-in to
-												additional content. This content is a little bit longer.
-											</p>
-											<button
-												type="button"
-												onClick={() => {
-													deleteLabel(index);
-												}}
-												className="btn btn-primary btn-sm">
-												Favorite
-											</button>
+									<div className="col-4" key={index}>
+										<div className="card mb-5">
+											<img
+												src="https://wallpaperaccess.com/full/153605.jpg"
+												className="card-img-top cardimg"
+												alt="..."
+											/>
+											<div className="card-body">
+												<h5 className="card-title">{t.name}</h5>
+												<p className="card-text">
+													<p>Height: {Math.round((t.height / 30.48) * 10) / 10} ft </p>
+													<p>Gender: {t.gender}</p>
+													<p>Weight: {Math.round(t.mass * 2.205 * 10) / 10} lbs</p>
+												</p>
+												<button
+													type="button"
+													onClick={() => {
+														addToFav(t);
+														console.log({ favCards });
+													}}
+													className="btn btn-primary btn-sm">
+													Favorite
+												</button>
+											</div>
 										</div>
 									</div>
 							  ))}
@@ -100,6 +116,40 @@ export function Home() {
 					className="favorites m-3"
 					src="https://fontmeme.com/temporary/c7466f9c1d77c45dd8effcebb6adfa1f.png"
 				/>
+			</div>
+			<div className="container">
+				<div className="row">
+					<div className="col-4" />
+					<div className="card-deck">
+						{favCards.map((t, index) => (
+							<div className="col-4" key={index}>
+								<div className="card mb-5">
+									<img
+										src="https://wallpaperaccess.com/full/153605.jpg"
+										className="card-img-top cardimg"
+										alt="..."
+									/>
+									<div className="card-body">
+										<h5 className="card-title">{t.name}</h5>
+										<p className="card-text">
+											<p>Height: {Math.round((t.height / 30.48) * 10) / 10} ft </p>
+											<p>Gender: {t.gender}</p>
+											<p>Weight: {Math.round(t.mass * 2.205 * 10) / 10} lbs</p>
+										</p>
+										<button
+											type="button"
+											onClick={() => {
+												deleteLabel(index);
+											}}
+											className="btn btn-primary btn-sm">
+											Delete
+										</button>
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
 			</div>
 		</div>
 	);
