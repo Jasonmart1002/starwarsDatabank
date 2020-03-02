@@ -4,13 +4,21 @@ import "../../styles/home.scss";
 
 export function Home() {
 	const [tasks, setTasks] = useState(null);
+
+	const deleteLabel = val => {
+		const newTasks = [...tasks];
+		newTasks.splice(val, 1);
+		setTasks(newTasks);
+	};
+
 	useEffect(
 		() =>
-			fetch("https://assets.breatheco.de/apis/fake/todos/user/jason")
+			fetch("https://swapi.co/api/people/")
 				.then(r => r.json())
-				.then(data => setTasks(data)),
+				.then(data => setTasks(data.results)),
 		[]
 	);
+
 	return (
 		<div className="container-fluid p-0">
 			<div className="container">
@@ -62,14 +70,19 @@ export function Home() {
 											alt="..."
 										/>
 										<div className="card-body">
-											<h5 className="card-title">{t.label}</h5>
+											<h5 className="card-title">{t.name}</h5>
 											<p className="card-text">
 												This is a longer card with supporting text below as a natural lead-in to
 												additional content. This content is a little bit longer.
 											</p>
-											<p className="card-text">
-												<small className="text-muted">Last updated 3 mins ago</small>
-											</p>
+											<button
+												type="button"
+												onClick={() => {
+													deleteLabel(index);
+												}}
+												className="btn btn-primary btn-sm">
+												Favorite
+											</button>
 										</div>
 									</div>
 							  ))}

@@ -18,6 +18,7 @@ export const Layout = () => {
 
 	return (
 		<div className="d-flex flex-column h-100">
+			<script src="https://kit.fontawesome.com/663652a9a6.js" crossOrigin="anonymous" />
 			<BrowserRouter>
 				<ScrollToTop>
 					<Navbar />
