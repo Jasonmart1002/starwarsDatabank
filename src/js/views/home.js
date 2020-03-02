@@ -22,13 +22,6 @@ export function Home() {
 
 	const { store, actions } = useContext(Context);
 
-	// useEffect(() => {
-	// 	fetch("https://swapi.co/api/people/")
-	// 		.then(r => r.json())
-	// 		.then(data => setTasks(data.results)),
-	// 		[];
-	// }, []);
-
 	return (
 		<div className="container-fluid p-0">
 			<div id="carouselExampleFade" className="carousel slide carousel-fade mb-5 " data-ride="carousel">
@@ -64,6 +57,7 @@ export function Home() {
 					<span className="sr-only">Next</span>
 				</a>
 			</div>
+
 			<div className="container-fluid">
 				<img
 					className="saber"
@@ -81,7 +75,7 @@ export function Home() {
 				<div className="row">
 					<div className="col">
 						<div className="card-deck">
-							{store.tasks === null
+							{!store.tasks
 								? "Loading..."
 								: store.tasks.map((t, index) => (
 										<div className="col-4" key={index}>
@@ -93,11 +87,11 @@ export function Home() {
 												/>
 												<div className="card-body">
 													<h5 className="card-title">{t.name}</h5>
-													<p className="card-text">
+													<div className="card-text">
 														<p>Height: {Math.round((t.height / 30.48) * 10) / 10} ft </p>
 														<p>Gender: {t.gender}</p>
 														<p>Weight: {Math.round(t.mass * 2.205 * 10) / 10} lbs</p>
-													</p>
+													</div>
 													<button
 														type="button"
 														onClick={() => {
